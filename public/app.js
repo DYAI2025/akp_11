@@ -73,7 +73,14 @@ function normalizePrompt(candidate) {
 
   const path = sanitizeString(candidate.path);
   const route = sanitizeString(candidate.route);
-  if (!path.startsWith('all-prompts/') || path.includes('__MACOSX') || path.includes('/._') || !isSafePromptRoute(route)) {
+  if (
+    !path.startsWith('all-prompts/')
+    || path.includes('__MACOSX')
+    || path.includes('/._')
+    || path.endsWith('/.DS_Store')
+    || path.includes('/.DS_Store/')
+    || !isSafePromptRoute(route)
+  ) {
     return null;
   }
 
