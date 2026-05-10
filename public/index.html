@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Durchsuchbarer Prompt-Katalog mit Railway-ready Node.js Deployment.">
+    <title>AKP 11 Prompt Browser</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Hauptnavigation">
+        <strong>AKP 11</strong>
+        <a href="/health">Health</a>
+        <a href="/index.json">JSON</a>
+      </nav>
+      <section class="hero__content">
+        <p class="eyebrow">Railway-ready Prompt Repository</p>
+        <h1>Prompts schnell finden, prüfen und sicher anzeigen.</h1>
+        <p>
+          Der Browser lädt den generierten Index, rendert Inhalte ohne HTML-Injektion
+          und stellt Health- sowie Rohdaten-Endpunkte für Deployments bereit.
+        </p>
+      </section>
+    </header>
+
+    <main class="shell">
+      <section class="controls" aria-labelledby="search-heading">
+        <div>
+          <p class="eyebrow">Katalog</p>
+          <h2 id="search-heading">Suche & Filter</h2>
+        </div>
+        <label>
+          <span>Suchbegriff</span>
+          <input id="search" type="search" placeholder="Titel, Kategorie oder Vorschau" autocomplete="off">
+        </label>
+        <label>
+          <span>Kategorie</span>
+          <select id="category">
+            <option value="">Alle Kategorien</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="status-grid" aria-live="polite">
+        <article>
+          <span id="total-count">0</span>
+          <p>Prompts indexiert</p>
+        </article>
+        <article>
+          <span id="visible-count">0</span>
+          <p>Aktuell sichtbar</p>
+        </article>
+        <article>
+          <span id="category-count">0</span>
+          <p>Kategorien</p>
+        </article>
+      </section>
+
+      <p id="status" class="status" role="status">Index wird geladen…</p>
+      <section id="results" class="cards" aria-label="Prompt-Ergebnisse"></section>
+    </main>
+
+    <dialog id="prompt-dialog" class="dialog">
+      <form method="dialog">
+        <button class="dialog__close" aria-label="Dialog schließen">×</button>
+      </form>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-meta" class="muted"></p>
+      <div class="reader-toolbar" aria-label="Reader-Werkzeuge">
+        <button id="copy-prompt" type="button">Prompt kopieren</button>
+        <button id="copy-link" type="button">Link kopieren</button>
+        <button id="reader-smaller" type="button" aria-label="Schrift verkleinern">A−</button>
+        <button id="reader-larger" type="button" aria-label="Schrift vergrößern">A+</button>
+        <button id="toggle-wrap" type="button" aria-pressed="true">Umbruch an</button>
+      </div>
+      <p id="reader-status" class="muted" role="status"></p>
+      <pre id="dialog-content" class="reader reader--wrap" tabindex="0"></pre>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
