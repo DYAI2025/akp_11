@@ -4,17 +4,17 @@ Dieses Repository enthält eine Railway-fähige Node.js-Web-App, die die Dateien
 
 ## Funktionen
 
-- Generiert einen sauberen `index.json` ohne macOS-Metadaten wie `__MACOSX`, `.DS_Store` oder AppleDouble-Dateien.
-- Stellt eine responsive Frontend-Oberfläche mit Suche, Kategorie-Filter, Prompt-Dialog, Copy-Buttons und Reader-Einstellungen bereit.
-- Rendert Prompt-Inhalte ausschließlich über `textContent`, validiert Indexdaten im Browser und blockiert unsichere Prompt-Routen.
-- Sendet strenge Security-Header inklusive CSP, Trusted-Types-Anforderung, Frame-Schutz und restriktiver Permissions-Policy.
+- Generiert einen sauberen `index.json` und `catalog.md` ohne macOS-Metadaten wie `__MACOSX`, `.DS_Store`, AppleDouble-Dateien oder nicht unterstützte Binärdateien.
+- Stellt eine responsive Frontend-Oberfläche mit Suche, Kategorie-Filter und Prompt-Dialog bereit.
+- Rendert Prompt-Inhalte ausschließlich über `textContent`, setzt strikte Sicherheitsheader/CSP und führt Prompt-Inhalte nicht als HTML aus.
 - Bietet Deployment-Endpunkte für Railway:
   - `/` Frontend
   - `/index.json` generierter Prompt-Index
-  - `/prompts/<path>` Rohdatei-Zugriff auf indexierte Text-Prompts
+  - `/catalog.md` generierter Markdown-Katalog ohne Binärdiff
+  - `/prompts/<path>` Rohdatei-Zugriff auf indexierte Prompts
   - `/health` Healthcheck mit Index-Zählung
+- Enthält Copy-/Reader-Komfortfunktionen wie Rohtext-Link, Kopieren, Lesezeit, Schriftgröße und Zeilenumbruch.
 - Enthält Unit-, Frontend-, Server- und Smoke-Tests für stabile Deployments.
-- Binärdateien werden bewusst nicht indexiert oder als Prompt ausgeliefert; der Browser ist für Text-/Markdown-Prompts ausgelegt.
 
 ## Lokale Entwicklung
 
@@ -36,4 +36,4 @@ Railway kann das Repository direkt mit Nixpacks deployen. Die relevante Konfigur
 - Start: `npm start`
 - Healthcheck: `/health`
 
-Vor jedem Deployment sollte die CI erfolgreich sein, da sie den Index neu generiert, Tests ausführt und den Deployment-Smoke-Check startet.
+Vor jedem Deployment sollte die CI erfolgreich sein, da sie den JSON-Index und den textbasierten Markdown-Katalog neu generiert, Tests ausführt und den Deployment-Smoke-Check startet.

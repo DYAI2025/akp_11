@@ -7,8 +7,10 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const PROMPTS_DIR = path.join(__dirname, 'all-prompts');
+const INDEX_PATH = path.join(__dirname, 'index.json');
 const ROOT_FILES = new Map([
-  ['/index.json', path.join(__dirname, 'index.json')],
+  ['/index.json', INDEX_PATH],
+  ['/catalog.md', path.join(__dirname, 'catalog.md')],
 ]);
 
 const MIME_TYPES = new Map([
@@ -24,25 +26,32 @@ const SECURITY_HEADERS = {
   'content-security-policy': [
     "default-src 'self'",
     "base-uri 'none'",
+    "connect-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'none'",
+    "img-src 'self' data:",
     "object-src 'none'",
     "script-src 'self'",
     "style-src 'self'",
-    "img-src 'self' data:",
-    "connect-src 'self'",
-    "font-src 'self'",
-    "require-trusted-types-for 'script'",
-    'trusted-types default',
   ].join('; '),
   'cross-origin-opener-policy': 'same-origin',
-  'cross-origin-resource-policy': 'same-origin',
-  'origin-agent-cluster': '?1',
-  'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self), clipboard-read=(), clipboard-write=(self)',
   'referrer-policy': 'no-referrer',
   'x-content-type-options': 'nosniff',
   'x-frame-options': 'DENY',
+  'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
 };
+
+function securityHeaders(extraHeaders = {}) {
+  return { ...SECURITY_HEADERS, ...extraHeaders };
+}
+
+function decodePathSegment(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return null;
+  }
+}
 
 function safeJoin(baseDir, requestedPath) {
   const normalized = path.normalize(requestedPath).replace(/^([/\\])+/, '');
@@ -56,134 +65,110 @@ function safeJoin(baseDir, requestedPath) {
   return resolved;
 }
 
-function isProbablyBinary(buffer) {
-  if (buffer.length === 0) {
-    return false;
-  }
-
-  const sample = buffer.subarray(0, Math.min(buffer.length, 8192));
-  if (sample.includes(0)) {
-    return true;
-  }
-
-  let suspicious = 0;
-  for (const byte of sample) {
-    const isCommonTextByte = byte === 9 || byte === 10 || byte === 13 || (byte >= 32 && byte <= 126) || byte >= 128;
-    if (!isCommonTextByte) {
-      suspicious += 1;
-    }
-  }
-
-  return suspicious / sample.length > 0.08;
+async function getPromptIndex() {
+  return JSON.parse(await readFile(INDEX_PATH, 'utf8'));
 }
 
-async function assertTextFile(filePath) {
-  const handle = await readFile(filePath);
-  if (isProbablyBinary(handle)) {
-    const error = new Error('Binary files are not supported');
-    error.code = 'UNSUPPORTED_BINARY';
-    throw error;
-  }
+async function getAllowedPromptPaths() {
+  const index = await getPromptIndex();
+  return new Set(index.map((entry) => entry.path.replace(/^all-prompts\//, '')));
 }
 
-function withSecurityHeaders(headers = {}) {
-  return { ...SECURITY_HEADERS, ...headers };
-}
-
-async function sendFile(req, res, filePath, statusCode = 200, options = {}) {
+async function sendFile(req, res, filePath, statusCode = 200) {
   try {
     const fileStat = await stat(filePath);
     if (!fileStat.isFile()) {
-      sendJson(res, 404, { error: 'Not found' });
+      sendJson(req, res, 404, { error: 'Not found' });
       return;
     }
 
-    if (options.textOnly) {
-      await assertTextFile(filePath);
-    }
-
     const extension = path.extname(filePath);
-    res.writeHead(statusCode, withSecurityHeaders({
+    const headers = securityHeaders({
       'content-length': fileStat.size,
-      'content-type': MIME_TYPES.get(extension) ?? 'text/plain; charset=utf-8',
-    }));
-
+      'content-type': MIME_TYPES.get(extension) ?? 'application/octet-stream',
+    });
+    res.writeHead(statusCode, headers);
     if (req.method === 'HEAD') {
       res.end();
       return;
     }
-
     createReadStream(filePath).pipe(res);
   } catch (error) {
     if (error?.code === 'ENOENT') {
-      sendJson(res, 404, { error: 'Not found' });
+      sendJson(req, res, 404, { error: 'Not found' });
       return;
     }
-    if (error?.code === 'UNSUPPORTED_BINARY') {
-      sendJson(res, 415, { error: 'Binary files are not supported' });
-      return;
-    }
-    sendJson(res, 500, { error: 'Internal server error' });
+    sendJson(req, res, 500, { error: 'Internal server error' });
   }
 }
 
-function sendJson(res, statusCode, payload) {
+function sendJson(req, res, statusCode, payload) {
   const body = JSON.stringify(payload);
-  res.writeHead(statusCode, withSecurityHeaders({
+  res.writeHead(statusCode, securityHeaders({
     'content-length': Buffer.byteLength(body),
     'content-type': 'application/json; charset=utf-8',
   }));
-  res.end(body);
+  res.end(req.method === 'HEAD' ? undefined : body);
 }
 
 export function createServer() {
   return createHttpServer(async (req, res) => {
     if (!req.url || !req.method || !['GET', 'HEAD'].includes(req.method)) {
-      sendJson(res, 405, { error: 'Method not allowed' });
+      sendJson(req, res, 405, { error: 'Method not allowed' });
       return;
     }
 
-    let url;
-    try {
-      url = new URL(req.url, 'http://localhost');
-    } catch {
-      sendJson(res, 400, { error: 'Invalid URL' });
-      return;
-    }
+    const url = new URL(req.url, 'http://localhost');
 
     if (url.pathname === '/health') {
       try {
-        const index = JSON.parse(await readFile(path.join(__dirname, 'index.json'), 'utf8'));
-        sendJson(res, 200, { ok: true, prompts: index.length });
+        const index = await getPromptIndex();
+        sendJson(req, res, 200, { ok: true, prompts: index.length });
       } catch {
-        sendJson(res, 500, { ok: false, error: 'Index unavailable' });
+        sendJson(req, res, 500, { ok: false, error: 'Index unavailable' });
       }
       return;
     }
 
     if (ROOT_FILES.has(url.pathname)) {
-      await sendFile(req, res, ROOT_FILES.get(url.pathname), 200, { textOnly: true });
+      await sendFile(req, res, ROOT_FILES.get(url.pathname));
       return;
     }
 
     if (url.pathname.startsWith('/prompts/')) {
-      const requested = decodeURIComponent(url.pathname.slice('/prompts/'.length));
-      const filePath = safeJoin(PROMPTS_DIR, requested);
-      if (!filePath) {
-        sendJson(res, 400, { error: 'Invalid prompt path' });
+      const requested = decodePathSegment(url.pathname.slice('/prompts/'.length));
+      if (!requested) {
+        sendJson(req, res, 400, { error: 'Invalid prompt path' });
         return;
       }
-      await sendFile(req, res, filePath, 200, { textOnly: true });
+
+      const allowedPromptPaths = await getAllowedPromptPaths();
+      if (!allowedPromptPaths.has(requested)) {
+        sendJson(req, res, 404, { error: 'Prompt not found or unsupported file type' });
+        return;
+      }
+
+      const filePath = safeJoin(PROMPTS_DIR, requested);
+      if (!filePath) {
+        sendJson(req, res, 400, { error: 'Invalid prompt path' });
+        return;
+      }
+      await sendFile(req, res, filePath);
       return;
     }
 
-    const publicPath = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname);
-    const filePath = safeJoin(PUBLIC_DIR, publicPath);
-    if (!filePath) {
-      sendJson(res, 400, { error: 'Invalid asset path' });
+    const publicPath = url.pathname === '/' ? 'index.html' : decodePathSegment(url.pathname);
+    if (!publicPath) {
+      sendJson(req, res, 400, { error: 'Invalid asset path' });
       return;
     }
-    await sendFile(req, res, filePath, 200, { textOnly: true });
+
+    const filePath = safeJoin(PUBLIC_DIR, publicPath);
+    if (!filePath) {
+      sendJson(req, res, 400, { error: 'Invalid asset path' });
+      return;
+    }
+    await sendFile(req, res, filePath);
   });
 }
 

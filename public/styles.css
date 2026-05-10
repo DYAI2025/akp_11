@@ -146,42 +146,50 @@ select {
   .hero__content { padding-top: 2rem; }
 }
 
+.card__actions,
 .reader-toolbar {
-  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: .55rem;
-  margin: 1rem 0 .5rem;
+  gap: .65rem;
 }
 
-.reader-toolbar button {
-  background: #eef0ff;
-  border: 1px solid var(--border);
-  border-radius: .75rem;
-  color: var(--brand-dark);
+.button-link,
+.reader-toolbar button,
+.dialog__close {
+  align-items: center;
+  border: 0;
+  border-radius: .8rem;
   cursor: pointer;
+  display: inline-flex;
   font: inherit;
   font-weight: 800;
-  padding: .55rem .8rem;
+  justify-content: center;
+  padding: .75rem 1rem;
+  text-decoration: none;
 }
 
-.reader-toolbar button:hover,
-.reader-toolbar button:focus-visible {
-  background: var(--brand);
-  color: white;
-  outline: 3px solid rgb(109 93 252 / 22%);
+.button-link,
+.reader-toolbar button {
+  background: #eef0ff;
+  color: var(--brand-dark);
 }
 
-.reader {
-  line-height: 1.65;
-  tab-size: 2;
+.button-link:hover,
+.reader-toolbar button:hover { background: #e1e4ff; }
+.button-link--secondary { color: #35415a; }
+
+.reader-toolbar {
+  border-block: 1px solid var(--border);
+  margin: 1rem 0;
+  padding: .9rem 0;
 }
 
-.reader--wrap {
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
-}
-
-.reader:not(.reader--wrap) {
+.dialog pre.is-nowrap {
   white-space: pre;
+}
+
+.dialog__close {
+  background: #f3f4f6;
+  color: var(--ink);
+  padding: .35rem .7rem;
 }

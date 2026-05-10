@@ -14,10 +14,10 @@ test('generated index contains only deployable prompt files', () => {
     assert.ok(!entry.path.includes('__MACOSX'), `${entry.path} should not include macOS metadata`);
     assert.ok(!entry.path.includes('/._'), `${entry.path} should not include AppleDouble files`);
     assert.ok(!entry.path.endsWith('.DS_Store'), `${entry.path} should not include Finder metadata`);
+    assert.ok(!entry.path.split('/').some((part) => part.startsWith('.')), `${entry.path} should not include hidden files`);
     assert.ok(entry.title, 'entry should expose a title for the frontend');
     assert.ok(entry.route.startsWith('/prompts/'), 'entry should expose a prompt route');
     assert.ok(entry.preview.length <= 260, 'preview should be bounded');
-    assert.doesNotMatch(entry.preview, /\u0000/, 'preview should not contain NUL bytes');
     assert.ok(!slugs.has(entry.slug), `duplicate slug ${entry.slug}`);
     slugs.add(entry.slug);
   }

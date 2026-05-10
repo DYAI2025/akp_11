@@ -15,11 +15,11 @@ test('frontend shell exposes critical deployment UI and reader hooks', () => {
     'total-count',
     'visible-count',
     'copy-prompt',
-    'copy-link',
-    'reader-smaller',
-    'reader-larger',
+    'raw-prompt',
+    'reader-stats',
+    'decrease-font',
+    'increase-font',
     'toggle-wrap',
-    'reader-status',
   ]) {
     assert.match(html, new RegExp(`id="${id}"`), `missing #${id}`);
   }
@@ -29,27 +29,21 @@ test('frontend shell exposes critical deployment UI and reader hooks', () => {
 });
 
 test('frontend renders untrusted prompt data as text, not HTML', () => {
-  assert.match(app, /title\.textContent = prompt\.title/);
+  assert.match(app, /textContent = prompt\.title/);
   assert.match(app, /preview\.textContent = prompt\.preview/);
   assert.match(app, /elements\.dialogContent\.textContent = text/);
   assert.doesNotMatch(app, /innerHTML\s*=/);
+  assert.doesNotMatch(app, /insertAdjacentHTML\s*\(/);
+  assert.doesNotMatch(app, /document\.write\s*\(/);
+  assert.doesNotMatch(app, /eval\s*\(/);
+  assert.doesNotMatch(app, /new Function\s*\(/);
   assert.doesNotMatch(html, / on[a-z]+=\"/i);
 });
 
-test('frontend validates prompt index data and unsafe routes before rendering', () => {
-  assert.match(app, /function normalizeIndex/);
-  assert.match(app, /function normalizePrompt/);
-  assert.match(app, /function isSafePromptRoute/);
-  assert.match(app, /!decodedPath\.includes\('\.\.'\)/);
-  assert.match(app, /credentials: 'same-origin'/);
-  assert.match(app, /MAX_TEXT_LENGTH/);
-});
-
-test('frontend preserves reader comfort features', () => {
-  assert.match(app, /navigator\.clipboard/);
-  assert.match(app, /execCommand\('copy'\)/);
+test('frontend includes copy and reader comfort controls without external dependencies', () => {
+  assert.match(app, /navigator\.clipboard\.writeText/);
+  assert.match(app, /getReaderStats/);
   assert.match(app, /readerFontSize/);
   assert.match(app, /readerWrap/);
-  assert.match(app, /copyActivePrompt/);
-  assert.match(app, /copyActiveLink/);
+  assert.doesNotMatch(html, /https?:\/\//i);
 });

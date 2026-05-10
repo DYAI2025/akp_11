@@ -1,4 +1,5 @@
-import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { isUtf8 } from 'node:buffer';
+import { readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -6,32 +7,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PROMPTS_DIR = path.join(ROOT_DIR, 'all-prompts');
 const INDEX_JSON = path.join(ROOT_DIR, 'index.json');
+const CATALOG_MD = path.join(ROOT_DIR, 'catalog.md');
 const MAX_PREVIEW_LENGTH = 260;
-const MAX_TEXT_FILE_BYTES = 2 * 1024 * 1024;
 
 function isIgnoredName(name) {
   return name === '__MACOSX' || name === '.DS_Store' || name.startsWith('._') || name.startsWith('.');
 }
 
-function isProbablyBinary(buffer) {
-  if (buffer.length === 0) {
-    return false;
-  }
-
-  const sample = buffer.subarray(0, Math.min(buffer.length, 8192));
-  if (sample.includes(0)) {
-    return true;
-  }
-
-  let suspicious = 0;
-  for (const byte of sample) {
-    const isCommonTextByte = byte === 9 || byte === 10 || byte === 13 || (byte >= 32 && byte <= 126) || byte >= 128;
-    if (!isCommonTextByte) {
-      suspicious += 1;
-    }
-  }
-
-  return suspicious / sample.length > 0.08;
+function isTextBuffer(buffer) {
+  return isUtf8(buffer) && !buffer.includes(0);
 }
 
 function normalizeText(value) {
@@ -40,6 +24,10 @@ function normalizeText(value) {
 
 function toPosixPath(value) {
   return value.split(path.sep).join('/');
+}
+
+function encodeRoutePath(relativePath) {
+  return relativePath.split('/').map((segment) => encodeURIComponent(segment)).join('/');
 }
 
 function detectLanguage(content) {
@@ -85,21 +73,16 @@ async function walk(directory) {
 
 const files = (await walk(PROMPTS_DIR)).sort((left, right) => left.localeCompare(right, 'en'));
 const records = [];
-const skipped = [];
+const skippedBinaryFiles = [];
 
 for (const filePath of files) {
   const relativePath = toPosixPath(path.relative(ROOT_DIR, filePath));
   const promptRelativePath = toPosixPath(path.relative(PROMPTS_DIR, filePath));
   const fileStat = await stat(filePath);
-
-  if (fileStat.size > MAX_TEXT_FILE_BYTES) {
-    skipped.push(`${relativePath} (too large for text index)`);
-    continue;
-  }
-
   const rawBuffer = await readFile(filePath);
-  if (isProbablyBinary(rawBuffer)) {
-    skipped.push(`${relativePath} (binary file)`);
+
+  if (!isTextBuffer(rawBuffer)) {
+    skippedBinaryFiles.push(relativePath);
     continue;
   }
 
@@ -112,7 +95,7 @@ for (const filePath of files) {
     title,
     slug: makeSlug(promptRelativePath),
     path: relativePath,
-    route: `/prompts/${encodeURI(promptRelativePath).replace(/#/g, '%23')}`,
+    route: `/prompts/${encodeRoutePath(promptRelativePath)}`,
     size: fileStat.size,
     category,
     subcategory: subpath.length > 1 ? subpath.slice(0, -1).join('/') : '',
@@ -123,7 +106,26 @@ for (const filePath of files) {
 
 await writeFile(INDEX_JSON, `${JSON.stringify(records, null, 2)}\n`);
 
-console.log(`Generated ${records.length} prompt records.`);
-if (skipped.length > 0) {
-  console.warn(`Skipped ${skipped.length} unsupported files:\n${skipped.map((entry) => `- ${entry}`).join('\n')}`);
+const categories = new Map();
+for (const record of records) {
+  categories.set(record.category, (categories.get(record.category) ?? 0) + 1);
 }
+
+const md = [
+  '# Prompt Catalog',
+  '',
+  `Generated from \`all-prompts\` with ${records.length} text prompt files.`,
+  skippedBinaryFiles.length > 0 ? `Skipped ${skippedBinaryFiles.length} unsupported binary file(s).` : 'Skipped 0 unsupported binary files.',
+  '',
+  '## Categories',
+  '',
+  ...[...categories.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en')).map(([category, count]) => `- ${category}: ${count}`),
+  '',
+  '## Prompts',
+  '',
+  ...records.map((record) => `- [${record.title}](${encodeRoutePath(record.path)}) — ${record.category}, ${record.size} bytes`),
+  '',
+].join('\n');
+
+await writeFile(CATALOG_MD, md);
+console.log(`Generated ${records.length} prompt records. Skipped ${skippedBinaryFiles.length} unsupported binary file(s).`);

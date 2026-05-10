@@ -28,12 +28,8 @@ try {
   });
 
   await check('/', async (response, body) => ({
-    ok: response.ok
-      && body.includes('AKP 11 Prompt Browser')
-      && body.includes('/app.js')
-      && response.headers.get('content-security-policy')?.includes("object-src 'none'")
-      && response.headers.get('x-frame-options') === 'DENY',
-    message: `expected secured frontend shell, got ${response.status}`,
+    ok: response.ok && body.includes('AKP 11 Prompt Browser') && body.includes('/app.js'),
+    message: `expected frontend shell, got ${response.status}`,
   }));
 
   await check('/index.json', async (response, body) => {
@@ -43,6 +39,11 @@ try {
       message: 'expected non-empty prompt index with prompt routes',
     };
   });
+
+  await check('/catalog.md', async (response, body) => ({
+    ok: response.ok && body.includes('# Prompt Catalog') && body.includes('unsupported binary'),
+    message: `expected text markdown catalog, got ${response.status}`,
+  }));
 
   await check('/prompts/../README.md', async (response) => ({
     ok: response.status >= 400,

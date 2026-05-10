@@ -67,15 +67,15 @@
       </form>
       <h2 id="dialog-title"></h2>
       <p id="dialog-meta" class="muted"></p>
-      <div class="reader-toolbar" aria-label="Reader-Werkzeuge">
+      <div class="reader-toolbar" aria-label="Lesewerkzeuge">
         <button id="copy-prompt" type="button">Prompt kopieren</button>
-        <button id="copy-link" type="button">Link kopieren</button>
-        <button id="reader-smaller" type="button" aria-label="Schrift verkleinern">A−</button>
-        <button id="reader-larger" type="button" aria-label="Schrift vergrößern">A+</button>
+        <a id="raw-prompt" class="button-link" href="/index.json" rel="noopener">Rohtext öffnen</a>
+        <button id="decrease-font" type="button" aria-label="Schrift verkleinern">A−</button>
+        <button id="increase-font" type="button" aria-label="Schrift vergrößern">A+</button>
         <button id="toggle-wrap" type="button" aria-pressed="true">Umbruch an</button>
       </div>
-      <p id="reader-status" class="muted" role="status"></p>
-      <pre id="dialog-content" class="reader reader--wrap" tabindex="0"></pre>
+      <p id="reader-stats" class="muted"></p>
+      <pre id="dialog-content"></pre>
     </dialog>
 
     <script type="module" src="/app.js"></script>
