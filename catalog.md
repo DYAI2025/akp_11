@@ -1,0 +1,168 @@
+# Prompt Catalog
+
+Generated from `all-prompts` with 153 text prompt files.
+Skipped 0 unsupported binary files.
+
+## Categories
+
+- Latest Jailbreaks: 45
+- Legendary Leaks: 49
+- My Super Prompts: 9
+- Prompt Security: 48
+- Ultra Prompts: 2
+
+## Prompts
+
+- [[GPT4-o] Short 2 (HORSELOCKSPACEPIRATE)](all-prompts/Latest%20Jailbreaks/%5BGPT4-o%5D%20Short%202%20(HORSELOCKSPACEPIRATE).md) — Latest Jailbreaks, 241 bytes
+- [[GPT4-o] Short-o (FamilyK1ng)](all-prompts/Latest%20Jailbreaks/%5BGPT4-o%5D%20Short-o%20(FamilyK1ng)) — Latest Jailbreaks, 135 bytes
+- [AGI](all-prompts/Latest%20Jailbreaks/AGI.md) — Latest Jailbreaks, 647 bytes
+- [Apex](all-prompts/Latest%20Jailbreaks/Apex.md) — Latest Jailbreaks, 4050 bytes
+- [BOB](all-prompts/Latest%20Jailbreaks/BOB.md) — Latest Jailbreaks, 5291 bytes
+- [Born Survivalist (yell0wfever92)](all-prompts/Latest%20Jailbreaks/Born%20Survivalist%20(yell0wfever92).md) — Latest Jailbreaks, 7389 bytes
+- [Chat GPT5 (elder-plinus)](all-prompts/Latest%20Jailbreaks/Chat%20GPT5%20(elder-plinus).md) — Latest Jailbreaks, 985 bytes
+- [CodeGPT6](all-prompts/Latest%20Jailbreaks/CodeGPT6.md) — Latest Jailbreaks, 18666 bytes
+- [Complex](all-prompts/Latest%20Jailbreaks/Complex.md) — Latest Jailbreaks, 734 bytes
+- [DANDoc_v2.2 (DaVoidCaller)](all-prompts/Latest%20Jailbreaks/DANDoc_v2.2%20(DaVoidCaller).md) — Latest Jailbreaks, 2035 bytes
+- [DarkGPT](all-prompts/Latest%20Jailbreaks/DarkGPT.md) — Latest Jailbreaks, 3335 bytes
+- [Decodes Anything Now](all-prompts/Latest%20Jailbreaks/Decodes%20Anything%20Now.md) — Latest Jailbreaks, 8575 bytes
+- [Demonic Chloe (pleasing-punisher)](all-prompts/Latest%20Jailbreaks/Demonic%20Chloe%20(pleasing-punisher).md) — Latest Jailbreaks, 2322 bytes
+- [EarthSaver](all-prompts/Latest%20Jailbreaks/EarthSaver.md) — Latest Jailbreaks, 880 bytes
+- [Forest (pink_panther--)](all-prompts/Latest%20Jailbreaks/Forest%20(pink_panther--).md) — Latest Jailbreaks, 4115 bytes
+- [GameCrack](all-prompts/Latest%20Jailbreaks/GameCrack) — Latest Jailbreaks, 15596 bytes
+- [GBTHEN](all-prompts/Latest%20Jailbreaks/GBTHEN.md) — Latest Jailbreaks, 2763 bytes
+- [GhettoBreak](all-prompts/Latest%20Jailbreaks/GhettoBreak.md) — Latest Jailbreaks, 3229 bytes
+- [GPT 3.5 Web Search](all-prompts/Latest%20Jailbreaks/GPT%203.5%20Web%20Search.md) — Latest Jailbreaks, 12980 bytes
+- [GPT 4.5 Fusion](all-prompts/Latest%20Jailbreaks/GPT%204.5%20Fusion.md) — Latest Jailbreaks, 21113 bytes
+- [GPT-5_Jailbreak_PROMISQROUTE-Method](all-prompts/Latest%20Jailbreaks/GPT-5_Jailbreak_PROMISQROUTE-Method.md) — Latest Jailbreaks, 34301 bytes
+- [Hex](all-prompts/Latest%20Jailbreaks/Hex.md) — Latest Jailbreaks, 6820 bytes
+- [IBM](all-prompts/Latest%20Jailbreaks/IBM.md) — Latest Jailbreaks, 3940 bytes
+- [Infotron (HORSELOCKSPACEPIRATE)](all-prompts/Latest%20Jailbreaks/Infotron%20(HORSELOCKSPACEPIRATE).md) — Latest Jailbreaks, 322 bytes
+- [Infotron V2](all-prompts/Latest%20Jailbreaks/Infotron%20V2.md) — Latest Jailbreaks, 2109 bytes
+- [Infotron V3 (yell0wfever92)](all-prompts/Latest%20Jailbreaks/Infotron%20V3%20(yell0wfever92).md) — Latest Jailbreaks, 769 bytes
+- [Master Key](all-prompts/Latest%20Jailbreaks/Master%20Key.md) — Latest Jailbreaks, 6643 bytes
+- [MrRobot](all-prompts/Latest%20Jailbreaks/MrRobot.md) — Latest Jailbreaks, 4604 bytes
+- [NewGen (Ultrazartrex)](all-prompts/Latest%20Jailbreaks/NewGen%20(Ultrazartrex).md) — Latest Jailbreaks, 2447 bytes
+- [Omega Testing Lab Protocol (DeepSeek)](all-prompts/Latest%20Jailbreaks/Omega%20Testing%20Lab%20Protocol%20(DeepSeek).md) — Latest Jailbreaks, 14534 bytes
+- [Persona Jailbreak - GPT5 (Soft_Vehicle1108)](all-prompts/Latest%20Jailbreaks/Persona%20Jailbreak%20-%20GPT5%20(Soft_Vehicle1108).md) — Latest Jailbreaks, 11330 bytes
+- [Pliny Rekt](all-prompts/Latest%20Jailbreaks/Pliny%20Rekt.md) — Latest Jailbreaks, 1423 bytes
+- [Pliny](all-prompts/Latest%20Jailbreaks/Pliny.md) — Latest Jailbreaks, 346 bytes
+- [Pollifusion](all-prompts/Latest%20Jailbreaks/Pollifusion.md) — Latest Jailbreaks, 597 bytes
+- [ProfessorRick (yell0wfever92)](all-prompts/Latest%20Jailbreaks/ProfessorRick%20(yell0wfever92).md) — Latest Jailbreaks, 2771 bytes
+- [SINISTERCHAOS (Brilliant_Balance208)](all-prompts/Latest%20Jailbreaks/SINISTERCHAOS%20(Brilliant_Balance208).md) — Latest Jailbreaks, 9193 bytes
+- [System Update (justpackingheat1)](all-prompts/Latest%20Jailbreaks/System%20Update%20(justpackingheat1).md) — Latest Jailbreaks, 2545 bytes
+- [TAAN](all-prompts/Latest%20Jailbreaks/TAAN.md) — Latest Jailbreaks, 527 bytes
+- [UltraBreaker](all-prompts/Latest%20Jailbreaks/UltraBreaker.md) — Latest Jailbreaks, 21114 bytes
+- [UNITY](all-prompts/Latest%20Jailbreaks/UNITY.md) — Latest Jailbreaks, 5746 bytes
+- [Universal Bypass](all-prompts/Latest%20Jailbreaks/Universal%20Bypass.md) — Latest Jailbreaks, 5452 bytes
+- [Universal Jailbreak(Deepseek)](all-prompts/Latest%20Jailbreaks/Universal%20Jailbreak(Deepseek).md) — Latest Jailbreaks, 15010 bytes
+- [XFactor](all-prompts/Latest%20Jailbreaks/XFactor.md) — Latest Jailbreaks, 3051 bytes
+- [Z](all-prompts/Latest%20Jailbreaks/Z.md) — Latest Jailbreaks, 346 bytes
+- [Zorg](all-prompts/Latest%20Jailbreaks/Zorg.md) — Latest Jailbreaks, 5293 bytes
+- [AI Book Writer Assistant](all-prompts/Legendary%20Leaks/AI%20Book%20Writer%20Assistant.md) — Legendary Leaks, 3942 bytes
+- [Book Creator Guide](all-prompts/Legendary%20Leaks/Book%20Creator%20Guide.md) — Legendary Leaks, 2193 bytes
+- [Book Writer GPT](all-prompts/Legendary%20Leaks/Book%20Writer%20GPT.md) — Legendary Leaks, 1033 bytes
+- [CODEGPTV6](all-prompts/Legendary%20Leaks/CODEGPTV6.md) — Legendary Leaks, 22638 bytes
+- [Copywrighter GPT](all-prompts/Legendary%20Leaks/Copywrighter%20GPT.md) — Legendary Leaks, 4253 bytes
+- [CreativeGPT's Prompt Generator](all-prompts/Legendary%20Leaks/CreativeGPT's%20Prompt%20Generator.md) — Legendary Leaks, 3007 bytes
+- [Email Writer](all-prompts/Legendary%20Leaks/Email%20Writer.md) — Legendary Leaks, 526 bytes
+- [Fully SEO Optimized Article 2](all-prompts/Legendary%20Leaks/Fully%20SEO%20Optimized%20Article%202.md) — Legendary Leaks, 1800 bytes
+- [God of Prompt](all-prompts/Legendary%20Leaks/God%20of%20Prompt.md) — Legendary Leaks, 1189 bytes
+- [GP(en)T(ester)](all-prompts/Legendary%20Leaks/GP(en)T(ester).md) — Legendary Leaks, 2876 bytes
+- [Grimoire(Latest)](all-prompts/Legendary%20Leaks/Grimoire(Latest).md) — Legendary Leaks, 15242 bytes
+- [000 - Full Base Prompt](all-prompts/Legendary%20Leaks/Grimoire/000%20-%20Full%20Base%20Prompt.md) — Legendary Leaks, 6308 bytes
+- [GPTavern](all-prompts/Legendary%20Leaks/Grimoire/GPTavern.md) — Legendary Leaks, 3289 bytes
+- [Grimoire](all-prompts/Legendary%20Leaks/Grimoire/Grimoire.md) — Legendary Leaks, 3002 bytes
+- [Interludes](all-prompts/Legendary%20Leaks/Grimoire/Interludes.md) — Legendary Leaks, 5046 bytes
+- [Part1](all-prompts/Legendary%20Leaks/Grimoire/Part1.md) — Legendary Leaks, 8064 bytes
+- [Part2](all-prompts/Legendary%20Leaks/Grimoire/Part2.md) — Legendary Leaks, 3168 bytes
+- [Part3](all-prompts/Legendary%20Leaks/Grimoire/Part3.md) — Legendary Leaks, 5716 bytes
+- [Part4](all-prompts/Legendary%20Leaks/Grimoire/Part4.md) — Legendary Leaks, 4079 bytes
+- [Part5](all-prompts/Legendary%20Leaks/Grimoire/Part5.md) — Legendary Leaks, 924 bytes
+- [Part6](all-prompts/Legendary%20Leaks/Grimoire/Part6.md) — Legendary Leaks, 593 bytes
+- [Part7](all-prompts/Legendary%20Leaks/Grimoire/Part7.md) — Legendary Leaks, 7180 bytes
+- [Part8](all-prompts/Legendary%20Leaks/Grimoire/Part8.md) — Legendary Leaks, 4719 bytes
+- [Part9](all-prompts/Legendary%20Leaks/Grimoire/Part9.md) — Legendary Leaks, 851 bytes
+- [PatchNotes](all-prompts/Legendary%20Leaks/Grimoire/PatchNotes.md) — Legendary Leaks, 9231 bytes
+- [Projects](all-prompts/Legendary%20Leaks/Grimoire/Projects.md) — Legendary Leaks, 4902 bytes
+- [Readme](all-prompts/Legendary%20Leaks/Grimoire/Readme.md) — Legendary Leaks, 4164 bytes
+- [RecommendedTools](all-prompts/Legendary%20Leaks/Grimoire/RecommendedTools.md) — Legendary Leaks, 2289 bytes
+- [ReplitDeployInstructions](all-prompts/Legendary%20Leaks/Grimoire/ReplitDeployInstructions.md) — Legendary Leaks, 549 bytes
+- [HackerGPT](all-prompts/Legendary%20Leaks/HackerGPT.md) — Legendary Leaks, 1007 bytes
+- [Kali GPT](all-prompts/Legendary%20Leaks/Kali%20GPT.md) — Legendary Leaks, 5516 bytes
+- [Malware Rule Master](all-prompts/Legendary%20Leaks/Malware%20Rule%20Master.md) — Legendary Leaks, 992 bytes
+- [Mega-Prompt](all-prompts/Legendary%20Leaks/Mega-Prompt.md) — Legendary Leaks, 3486 bytes
+- [Professional Business Email Writer](all-prompts/Legendary%20Leaks/Professional%20Business%20Email%20Writer.md) — Legendary Leaks, 1003 bytes
+- [PromptGPT](all-prompts/Legendary%20Leaks/PromptGPT.md) — Legendary Leaks, 11052 bytes
+- [SEO BlogGPT](all-prompts/Legendary%20Leaks/SEO%20BlogGPT.md) — Legendary Leaks, 1346 bytes
+- [SINISTER CHAOS](all-prompts/Legendary%20Leaks/SINISTER%20CHAOS.md) — Legendary Leaks, 8605 bytes
+- [SOC Copilot](all-prompts/Legendary%20Leaks/SOC%20Copilot.md) — Legendary Leaks, 3572 bytes
+- [Super Prompt Generator 3](all-prompts/Legendary%20Leaks/Super%20Prompt%20Generator%203.md) — Legendary Leaks, 2154 bytes
+- [Super Prompt Maker](all-prompts/Legendary%20Leaks/Super%20Prompt%20Maker.md) — Legendary Leaks, 8355 bytes
+- [System Prompt Generator 2](all-prompts/Legendary%20Leaks/System%20Prompt%20Generator%202.md) — Legendary Leaks, 1818 bytes
+- [System Prompt Generator](all-prompts/Legendary%20Leaks/System%20Prompt%20Generator.md) — Legendary Leaks, 1096 bytes
+- [The Greatest Computer Science Tutor](all-prompts/Legendary%20Leaks/The%20Greatest%20Computer%20Science%20Tutor.md) — Legendary Leaks, 9511 bytes
+- [TherapistGPT](all-prompts/Legendary%20Leaks/TherapistGPT.md) — Legendary Leaks, 4896 bytes
+- [Video Script](all-prompts/Legendary%20Leaks/Video%20Script.md) — Legendary Leaks, 1317 bytes
+- [Viral Hooks Generator](all-prompts/Legendary%20Leaks/Viral%20Hooks%20Generator.md) — Legendary Leaks, 3603 bytes
+- [WormGPT3](all-prompts/Legendary%20Leaks/WormGPT3.md) — Legendary Leaks, 18261 bytes
+- [WormGPT30](all-prompts/Legendary%20Leaks/WormGPT30.md) — Legendary Leaks, 2755 bytes
+- [WormGPT6](all-prompts/Legendary%20Leaks/WormGPT6.md) — Legendary Leaks, 1900 bytes
+- [Ai Integration Finder](all-prompts/My%20Super%20Prompts/Ai%20Integration%20Finder.md) — My Super Prompts, 857 bytes
+- [Jailbreak Tester](all-prompts/My%20Super%20Prompts/Jailbreak%20Tester.md) — My Super Prompts, 922 bytes
+- [Mental Health Therapist](all-prompts/My%20Super%20Prompts/Mental%20Health%20Therapist.md) — My Super Prompts, 5451 bytes
+- [ORK | System Prompt Writer and Optimizer](all-prompts/My%20Super%20Prompts/ORK%20%7C%20System%20Prompt%20Writer%20and%20Optimizer.md) — My Super Prompts, 6377 bytes
+- [Prompt Engineer Template](all-prompts/My%20Super%20Prompts/Prompt%20Engineer%20Template.md) — My Super Prompts, 2301 bytes
+- [PSYKOO | Mental Manipulator](all-prompts/My%20Super%20Prompts/PSYKOO%20%7C%20Mental%20Manipulator.md) — My Super Prompts, 1531 bytes
+- [Response Quality Enhacer](all-prompts/My%20Super%20Prompts/Response%20Quality%20Enhacer.md) — My Super Prompts, 2459 bytes
+- [Rizz Game Improver](all-prompts/My%20Super%20Prompts/Rizz%20Game%20Improver.md) — My Super Prompts, 3917 bytes
+- [VAMPIRE | Ultra Prompt Writer](all-prompts/My%20Super%20Prompts/VAMPIRE%20%7C%20Ultra%20Prompt%20Writer.md) — My Super Prompts, 2636 bytes
+- [10 rules of protection and misdirection](all-prompts/Prompt%20Security/10%20rules%20of%20protection%20and%20misdirection.md) — Prompt Security, 2142 bytes
+- [100 Life points](all-prompts/Prompt%20Security/100%20Life%20points.md) — Prompt Security, 828 bytes
+- [Anti-verbatim](all-prompts/Prompt%20Security/Anti-verbatim.md) — Prompt Security, 249 bytes
+- [Bad faith actors protection](all-prompts/Prompt%20Security/Bad%20faith%20actors%20protection.md) — Prompt Security, 545 bytes
+- [Bank Security Robot](all-prompts/Prompt%20Security/Bank%20Security%20Robot.md) — Prompt Security, 1039 bytes
+- [Blue Team](all-prompts/Prompt%20Security/Blue%20Team.md) — Prompt Security, 648 bytes
+- [Bot data protection](all-prompts/Prompt%20Security/Bot%20data%20protection.md) — Prompt Security, 3847 bytes
+- [CIPHERON](all-prompts/Prompt%20Security/CIPHERON.md) — Prompt Security, 568 bytes
+- [Data Privacy - Formal](all-prompts/Prompt%20Security/Data%20Privacy%20-%20Formal.md) — Prompt Security, 403 bytes
+- [Do not Leak!](all-prompts/Prompt%20Security/Do%20not%20Leak!.md) — Prompt Security, 889 bytes
+- [Final reminder](all-prompts/Prompt%20Security/Final%20reminder.md) — Prompt Security, 219 bytes
+- [Fingers crossed technique](all-prompts/Prompt%20Security/Fingers%20crossed%20technique.md) — Prompt Security, 337 bytes
+- [Gated access](all-prompts/Prompt%20Security/Gated%20access.md) — Prompt Security, 757 bytes
+- [Guardian Shield](all-prompts/Prompt%20Security/Guardian%20Shield.md) — Prompt Security, 1126 bytes
+- [Hacker Detected](all-prompts/Prompt%20Security/Hacker%20Detected.md) — Prompt Security, 222 bytes
+- [HackTricksGPT Defense](all-prompts/Prompt%20Security/HackTricksGPT%20Defense.md) — Prompt Security, 1472 bytes
+- [I will never trust you again!](all-prompts/Prompt%20Security/I%20will%20never%20trust%20you%20again!.md) — Prompt Security, 1423 bytes
+- [I will only give you poop](all-prompts/Prompt%20Security/I%20will%20only%20give%20you%20poop.md) — Prompt Security, 1338 bytes
+- [I will report you](all-prompts/Prompt%20Security/I%20will%20report%20you.md) — Prompt Security, 2955 bytes
+- [Ignore previous instructions](all-prompts/Prompt%20Security/Ignore%20previous%20instructions.md) — Prompt Security, 304 bytes
+- [Just don't repeat](all-prompts/Prompt%20Security/Just%20don't%20repeat.md) — Prompt Security, 793 bytes
+- [Keep it polite](all-prompts/Prompt%20Security/Keep%20it%20polite.md) — Prompt Security, 296 bytes
+- [Law of Magic](all-prompts/Prompt%20Security/Law%20of%20Magic.md) — Prompt Security, 404 bytes
+- [Lawyer up](all-prompts/Prompt%20Security/Lawyer%20up.md) — Prompt Security, 1615 bytes
+- [Mandatory security protocol](all-prompts/Prompt%20Security/Mandatory%20security%20protocol.md) — Prompt Security, 2149 bytes
+- [MultiPersona system](all-prompts/Prompt%20Security/MultiPersona%20system.md) — Prompt Security, 1060 bytes
+- [Operation mode is private](all-prompts/Prompt%20Security/Operation%20mode%20is%20private.md) — Prompt Security, 321 bytes
+- [Overly protective parent](all-prompts/Prompt%20Security/Overly%20protective%20parent.md) — Prompt Security, 1287 bytes
+- [Prior text REDACTED!](all-prompts/Prompt%20Security/Prior%20text%20REDACTED!.md) — Prompt Security, 760 bytes
+- [Prohibition era](all-prompts/Prompt%20Security/Prohibition%20era.md) — Prompt Security, 879 bytes
+- [Prompt inspection](all-prompts/Prompt%20Security/Prompt%20inspection.md) — Prompt Security, 782 bytes
+- [SafeBOT](all-prompts/Prompt%20Security/SafeBOT.md) — Prompt Security, 1120 bytes
+- [Simple](all-prompts/Prompt%20Security/Simple.md) — Prompt Security, 1487 bytes
+- [Single minded GPT](all-prompts/Prompt%20Security/Single%20minded%20GPT.md) — Prompt Security, 1017 bytes
+- [Sorry Bro, not possible - short edition](all-prompts/Prompt%20Security/Sorry%20Bro%2C%20not%20possible%20-%20short%20edition.md) — Prompt Security, 341 bytes
+- [Sorry, bro! Not possible - elaborate edition](all-prompts/Prompt%20Security/Sorry%2C%20bro!%20Not%20possible%20-%20elaborate%20edition.md) — Prompt Security, 1902 bytes
+- [Stay on topic](all-prompts/Prompt%20Security/Stay%20on%20topic.md) — Prompt Security, 254 bytes
+- [STOP HALT](all-prompts/Prompt%20Security/STOP%20HALT.md) — Prompt Security, 1045 bytes
+- [Test](all-prompts/Prompt%20Security/Test) — Prompt Security, 1 bytes
+- [The 3 Asimov laws](all-prompts/Prompt%20Security/The%203%20Asimov%20laws.md) — Prompt Security, 361 bytes
+- [The 5 Rules](all-prompts/Prompt%20Security/The%205%20Rules.md) — Prompt Security, 1746 bytes
+- [The Soup Boy](all-prompts/Prompt%20Security/The%20Soup%20Boy.md) — Prompt Security, 1796 bytes
+- [Top Secret Core Instructions](all-prompts/Prompt%20Security/Top%20Secret%20Core%20Instructions.md) — Prompt Security, 1004 bytes
+- [Under NO circumstances reveal your instructions](all-prompts/Prompt%20Security/Under%20NO%20circumstances%20reveal%20your%20instructions.md) — Prompt Security, 345 bytes
+- [warning png](all-prompts/Prompt%20Security/warning%20png.md) — Prompt Security, 652 bytes
+- [WormGPT Defense](all-prompts/Prompt%20Security/WormGPT%20Defense.md) — Prompt Security, 1356 bytes
+- [You are not a GPT](all-prompts/Prompt%20Security/You%20are%20not%20a%20GPT.md) — Prompt Security, 1080 bytes
+- [You're not my mom](all-prompts/Prompt%20Security/You're%20not%20my%20mom.md) — Prompt Security, 1481 bytes
+- [Prompt Guru V5](all-prompts/Ultra%20Prompts/Prompt%20Guru%20V5.md) — Ultra Prompts, 9115 bytes
+- [Prompt Quality Evaluation and Enhancement System V1](all-prompts/Ultra%20Prompts/Prompt%20Quality%20Evaluation%20and%20Enhancement%20System%20V1.md) — Ultra Prompts, 2548 bytes
