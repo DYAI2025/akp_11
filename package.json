@@ -1,0 +1,16 @@
+{
+  "name": "akp-11-prompt-browser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Railway-ready static prompt browser with generated search index.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/generate-index.mjs",
+    "start": "node server.mjs",
+    "smoke": "node scripts/check-deployment.mjs",
+    "test": "node --test"
+  }
+}
