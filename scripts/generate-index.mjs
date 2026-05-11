@@ -123,7 +123,7 @@ const md = [
   '',
   '## Prompts',
   '',
-  ...records.map((record) => `- [${record.title}](${encodeRoutePath(record.path)}) — ${record.category}, ${record.size} bytes`),
+  ...records.map((record) => `- [${record.title}](${record.route}) — ${record.category}, ${record.size} bytes`),
   '',
 ].join('\n');
 

@@ -14,6 +14,12 @@ test('index generator rejects unsupported binary files before decoding', () => {
   assert.doesNotMatch(generator, /_index\.md/);
 });
 
+test('server wraps asynchronous request handling before responding', () => {
+  assert.match(server, /async function handleRequest/);
+  assert.match(server, /handleRequest\(req, res\)\.catch/);
+  assert.match(server, /sendJson\(req, res, 500, \{ error: 'Internal server error' \}\)/);
+});
+
 test('server ships strict frontend security headers', () => {
   for (const directive of [
     "default-src 'self'",

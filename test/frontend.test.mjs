@@ -47,3 +47,12 @@ test('frontend includes copy and reader comfort controls without external depend
   assert.match(app, /readerWrap/);
   assert.doesNotMatch(html, /https?:\/\//i);
 });
+
+const css = readFileSync('public/styles.css', 'utf8');
+
+test('frontend CSS keeps long prompt metadata readable and dialogs inside the viewport', () => {
+  assert.match(css, /overflow-wrap:\s*anywhere/);
+  assert.match(css, /max-height:\s*calc\(100vh - 2rem\)/);
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /@media \(max-width: 800px\)/);
+});
