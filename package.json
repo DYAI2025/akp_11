@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "node scripts/generate-index.mjs",
+    "check:generated": "npm run build && git diff --exit-code -- index.json catalog.md && git diff --cached --exit-code -- index.json catalog.md",
     "start": "node server.mjs",
     "smoke": "node scripts/check-deployment.mjs",
     "test": "node --test"
