@@ -41,8 +41,12 @@ try {
   });
 
   await check('/catalog.md', async (response, body) => ({
-    ok: response.ok && body.includes('# Prompt Catalog') && body.includes('unsupported binary'),
-    message: `expected text markdown catalog, got ${response.status}`,
+    ok: response.ok
+      && body.includes('# Prompt Catalog')
+      && body.includes('unsupported binary')
+      && /^- \[[^\n]+?\]\(\/prompts\//m.test(body)
+      && !/^- \[[^\n]+?\]\(all-prompts\//m.test(body),
+    message: `expected text markdown catalog with served prompt links, got ${response.status}`,
   }));
 
   await check('/prompts/../README.md', async (response) => ({

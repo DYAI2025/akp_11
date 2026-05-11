@@ -111,10 +111,25 @@ function createCard(prompt) {
   return card;
 }
 
+function createEmptyState() {
+  const emptyState = document.createElement('article');
+  emptyState.className = 'card card--empty';
+
+  const title = document.createElement('h3');
+  title.textContent = 'Keine Prompts gefunden';
+
+  const message = document.createElement('p');
+  message.className = 'card__preview';
+  message.textContent = 'Passe Suche oder Kategorie an, um wieder Ergebnisse zu sehen.';
+
+  emptyState.append(title, message);
+  return emptyState;
+}
+
 function renderResults() {
   const filtered = state.prompts.filter(matchesPrompt);
   elements.visibleCount.textContent = String(filtered.length);
-  elements.results.replaceChildren(...filtered.map(createCard));
+  elements.results.replaceChildren(...(filtered.length ? filtered.map(createCard) : [createEmptyState()]));
   setStatus(filtered.length ? 'Bereit.' : 'Keine Treffer gefunden.');
 }
 

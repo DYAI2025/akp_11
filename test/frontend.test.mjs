@@ -47,3 +47,13 @@ test('frontend includes copy and reader comfort controls without external depend
   assert.match(app, /readerWrap/);
   assert.doesNotMatch(html, /https?:\/\//i);
 });
+
+
+test('frontend provides responsive and visible empty-result presentation', () => {
+  const css = readFileSync('public/styles.css', 'utf8');
+  assert.match(app, /function createEmptyState/);
+  assert.match(app, /card--empty/);
+  assert.match(css, /@media \(max-width: 800px\)/);
+  assert.match(css, /\.card--empty/);
+  assert.match(css, /grid-column: 1 \/ -1/);
+});

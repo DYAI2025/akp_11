@@ -32,8 +32,8 @@ Die App lauscht standardmäßig auf Port `3000`. Railway setzt automatisch `PORT
 
 Railway kann das Repository direkt mit Nixpacks deployen. Die relevante Konfiguration liegt in `railway.json`:
 
-- Build: `npm ci && npm run build`
+- Build: Nixpacks installiert Abhängigkeiten per `npm ci`; danach führt Railway `npm run build` aus.
 - Start: `npm start`
 - Healthcheck: `/health`
 
-Vor jedem Deployment sollte die CI erfolgreich sein, da sie den JSON-Index und den textbasierten Markdown-Katalog neu generiert, Tests ausführt und den Deployment-Smoke-Check startet.
+Vor jedem Deployment sollte die CI erfolgreich sein, da sie den JSON-Index und den textbasierten Markdown-Katalog neu generiert, diese generierten Artefakte auf nicht committete Drift prüft, Tests ausführt und den Deployment-Smoke-Check startet.
