@@ -111,64 +111,75 @@ function sendJson(req, res, statusCode, payload) {
   res.end(req.method === 'HEAD' ? undefined : body);
 }
 
-export function createServer() {
-  return createHttpServer(async (req, res) => {
-    if (!req.url || !req.method || !['GET', 'HEAD'].includes(req.method)) {
-      sendJson(req, res, 405, { error: 'Method not allowed' });
+async function handleRequest(req, res) {
+  if (!req.url || !req.method || !['GET', 'HEAD'].includes(req.method)) {
+    sendJson(req, res, 405, { error: 'Method not allowed' });
+    return;
+  }
+
+  const url = new URL(req.url, 'http://localhost');
+
+  if (url.pathname === '/health') {
+    try {
+      const index = await getPromptIndex();
+      sendJson(req, res, 200, { ok: true, prompts: index.length });
+    } catch {
+      sendJson(req, res, 500, { ok: false, error: 'Index unavailable' });
+    }
+    return;
+  }
+
+  if (ROOT_FILES.has(url.pathname)) {
+    await sendFile(req, res, ROOT_FILES.get(url.pathname));
+    return;
+  }
+
+  if (url.pathname.startsWith('/prompts/')) {
+    const requested = decodePathSegment(url.pathname.slice('/prompts/'.length));
+    if (!requested) {
+      sendJson(req, res, 400, { error: 'Invalid prompt path' });
       return;
     }
 
-    const url = new URL(req.url, 'http://localhost');
-
-    if (url.pathname === '/health') {
-      try {
-        const index = await getPromptIndex();
-        sendJson(req, res, 200, { ok: true, prompts: index.length });
-      } catch {
-        sendJson(req, res, 500, { ok: false, error: 'Index unavailable' });
-      }
+    const allowedPromptPaths = await getAllowedPromptPaths();
+    if (!allowedPromptPaths.has(requested)) {
+      sendJson(req, res, 404, { error: 'Prompt not found or unsupported file type' });
       return;
     }
 
-    if (ROOT_FILES.has(url.pathname)) {
-      await sendFile(req, res, ROOT_FILES.get(url.pathname));
-      return;
-    }
-
-    if (url.pathname.startsWith('/prompts/')) {
-      const requested = decodePathSegment(url.pathname.slice('/prompts/'.length));
-      if (!requested) {
-        sendJson(req, res, 400, { error: 'Invalid prompt path' });
-        return;
-      }
-
-      const allowedPromptPaths = await getAllowedPromptPaths();
-      if (!allowedPromptPaths.has(requested)) {
-        sendJson(req, res, 404, { error: 'Prompt not found or unsupported file type' });
-        return;
-      }
-
-      const filePath = safeJoin(PROMPTS_DIR, requested);
-      if (!filePath) {
-        sendJson(req, res, 400, { error: 'Invalid prompt path' });
-        return;
-      }
-      await sendFile(req, res, filePath);
-      return;
-    }
-
-    const publicPath = url.pathname === '/' ? 'index.html' : decodePathSegment(url.pathname);
-    if (!publicPath) {
-      sendJson(req, res, 400, { error: 'Invalid asset path' });
-      return;
-    }
-
-    const filePath = safeJoin(PUBLIC_DIR, publicPath);
+    const filePath = safeJoin(PROMPTS_DIR, requested);
     if (!filePath) {
-      sendJson(req, res, 400, { error: 'Invalid asset path' });
+      sendJson(req, res, 400, { error: 'Invalid prompt path' });
       return;
     }
     await sendFile(req, res, filePath);
+    return;
+  }
+
+  const publicPath = url.pathname === '/' ? 'index.html' : decodePathSegment(url.pathname);
+  if (!publicPath) {
+    sendJson(req, res, 400, { error: 'Invalid asset path' });
+    return;
+  }
+
+  const filePath = safeJoin(PUBLIC_DIR, publicPath);
+  if (!filePath) {
+    sendJson(req, res, 400, { error: 'Invalid asset path' });
+    return;
+  }
+  await sendFile(req, res, filePath);
+}
+
+export function createServer() {
+  return createHttpServer((req, res) => {
+    handleRequest(req, res).catch((error) => {
+      console.error('Unhandled request error:', error);
+      if (!res.headersSent) {
+        sendJson(req, res, 500, { error: 'Internal server error' });
+        return;
+      }
+      res.destroy(error);
+    });
   });
 }
 

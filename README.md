@@ -14,7 +14,7 @@ Dieses Repository enthält eine Railway-fähige Node.js-Web-App, die die Dateien
   - `/prompts/<path>` Rohdatei-Zugriff auf indexierte Prompts
   - `/health` Healthcheck mit Index-Zählung
 - Enthält Copy-/Reader-Komfortfunktionen wie Rohtext-Link, Kopieren, Lesezeit, Schriftgröße und Zeilenumbruch.
-- Enthält Unit-, Frontend-, Server- und Smoke-Tests für stabile Deployments.
+- Enthält Unit-, Frontend-, Server- und Smoke-Tests sowie CI-Gates für stabile Deployments und frisch generierte Artefakte.
 
 ## Lokale Entwicklung
 
@@ -36,4 +36,4 @@ Railway kann das Repository direkt mit Nixpacks deployen. Die relevante Konfigur
 - Start: `npm start`
 - Healthcheck: `/health`
 
-Vor jedem Deployment sollte die CI erfolgreich sein, da sie den JSON-Index und den textbasierten Markdown-Katalog neu generiert, Tests ausführt und den Deployment-Smoke-Check startet.
+Vor jedem Deployment sollte die CI erfolgreich sein, da sie den JSON-Index und den textbasierten Markdown-Katalog neu generiert, prüft, dass beide Artefakte committed sind, Tests ausführt und den Deployment-Smoke-Check startet.

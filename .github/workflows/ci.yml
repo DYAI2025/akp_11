@@ -24,6 +24,9 @@ jobs:
       - name: Build prompt index
         run: npm run build
 
+      - name: Verify generated artifacts are committed
+        run: git diff --exit-code index.json catalog.md
+
       - name: Run tests
         run: npm test
 

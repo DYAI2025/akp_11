@@ -193,3 +193,24 @@ select {
   color: var(--ink);
   padding: .35rem .7rem;
 }
+
+.card h3,
+.card__meta,
+.card__preview,
+.dialog h2,
+.dialog pre {
+  overflow-wrap: anywhere;
+}
+
+.dialog {
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgb(109 93 252 / 45%);
+  outline-offset: 3px;
+}
