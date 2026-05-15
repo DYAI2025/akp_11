@@ -61,5 +61,8 @@ test('serves indexed prompt files and blocks traversal or unsupported files', as
 
     const malformed = await fetch(`${baseUrl}/prompts/%E0%A4%A`);
     assert.equal(malformed.status, 400);
+
+    const stillHealthy = await fetch(`${baseUrl}/health`);
+    assert.equal(stillHealthy.status, 200);
   });
 });
