@@ -45,11 +45,14 @@ function securityHeaders(extraHeaders = {}) {
   return { ...SECURITY_HEADERS, ...extraHeaders };
 }
 
-function decodePathSegment(value) {
+function decodeRequestPath(value) {
   try {
     return decodeURIComponent(value);
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof URIError) {
+      return null;
+    }
+    throw error;
   }
 }
 
@@ -136,7 +139,7 @@ export function createServer() {
     }
 
     if (url.pathname.startsWith('/prompts/')) {
-      const requested = decodePathSegment(url.pathname.slice('/prompts/'.length));
+      const requested = decodeRequestPath(url.pathname.slice('/prompts/'.length));
       if (!requested) {
         sendJson(req, res, 400, { error: 'Invalid prompt path' });
         return;
@@ -157,7 +160,7 @@ export function createServer() {
       return;
     }
 
-    const publicPath = url.pathname === '/' ? 'index.html' : decodePathSegment(url.pathname);
+    const publicPath = url.pathname === '/' ? 'index.html' : decodeRequestPath(url.pathname);
     if (!publicPath) {
       sendJson(req, res, 400, { error: 'Invalid asset path' });
       return;
